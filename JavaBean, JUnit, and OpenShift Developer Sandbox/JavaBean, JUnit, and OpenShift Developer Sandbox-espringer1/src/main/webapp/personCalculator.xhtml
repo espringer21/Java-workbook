@@ -1,0 +1,52 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="aboutme"/>
+
+    <ui:define name="maincontent">
+        <p:messages id="messages" showDetail="true" showSummary="false">
+            <p:autoUpdate/>
+        </p:messages>
+
+        <h:form>
+
+            <div class="field">
+                <p:outputLabel for="first-name">First Name</p:outputLabel>
+                <p:inputText id="first-name" value="#{Person.firstname}" required="true" />
+            </div>
+            <div class="field">
+                <p:outputLabel for="last-name">Last Name</p:outputLabel>
+                <p:inputText id="last-name" value="#{Person.lastname}" required="true" />
+            </div>
+            <div class="field">
+                <p:outputLabel for="birth-date">Birth Date</p:outputLabel>
+                <p:calendar id="birth-date" value="#{Person.birthDate}" required="true" />
+            </div>
+            <div class="field">
+                <p:outputLabel for="age-on-date">Age on Date</p:outputLabel>
+                <p:calendar id="age-on-date" value="#{Person.ageon}" required="true" />
+            </div>
+
+
+            <p:commandButton value="Calculate Age" action="#{Person.currentAge()}" update="messages" />
+            <p:commandButton value="Calculate Age on Date" action="#{Person.ageOn(Person.ageon)}" update="messages" />
+            <p:commandButton value="Calculate Chinese Zodiac" action="#{Person.chineseZodiac()}" update="messages" />
+            <p:commandButton value="Calculate Astrological Sign" action="#{Person.astrologicalSign()}" update="messages" />
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

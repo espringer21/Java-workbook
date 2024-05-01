@@ -1,0 +1,18 @@
+// Firebase Realtime Database stores JSON data in a JSON Tree structure
+
+### Push new JSON data to the path
+POST https://dmit2015-assingment1-espringer-default-rtdb.firebaseio.com/beer.json
+Content-Type: application/json
+
+{
+  "name": "Rocky Mountain Red",
+  "brand": "Alberta Craft Breweries",
+  "style": "Alberta Amber Ale"
+}
+
+### Read JSON data by path
+GET https://dmit2015-assingment1-espringer-default-rtdb.firebaseio.com/beer.json
+
+### Read JSON data by path and primary key value
+GET https://dmit2015-assingment1-espringer-default-rtdb.firebaseio.com/beer/primaryKeyValue.json
+

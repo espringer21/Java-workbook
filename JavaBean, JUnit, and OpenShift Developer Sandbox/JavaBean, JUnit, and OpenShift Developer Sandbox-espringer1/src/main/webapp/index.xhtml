@@ -1,0 +1,42 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="aboutme"/>
+
+    <ui:define name="maincontent">
+
+        <div class="ui-card p-2 mt-2">
+            <h2>About Me</h2>
+            <h3>Elijah Springer</h3>
+        </div>
+
+
+        <!--Display all messages in FacesContext -->
+        <p:messages id="messages">
+            <p:autoUpdate/>
+        </p:messages>
+        <p:growl id="growl"/>
+
+        <!--Example on conditional rendering, you will need to change the rendered attribute value to an EL value expression -->
+        <p:outputPanel id="outputPanel">
+            <h:outputText
+                    rendered="false"
+                    value="Hello Faces World!"/>
+        </p:outputPanel>
+
+    </ui:define>
+
+</ui:composition>

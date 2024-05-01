@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="batchletETLProcessForDWNorthwindOrders" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+
+    <!--
+    <properties>
+    	<property name="input_file" value="/META-INF/data/dataexport.csv" />
+    </properties>
+    -->
+
+    <listeners>
+        <!-- Use a JobListener to delete all existing records and let the batchlet re-create all records.  -->
+                <listener ref="emailJobListener"/>
+    </listeners>
+
+    <step id="dropFKs" next="truncateTables">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-drop-foreign-keys.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+    <step id="truncateTables" next="fillDimCustomers">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-truncate-tables.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+    <step id="fillDimCustomers" next="DimEmployees">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-fill-DimCustomers.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+    <step id="DimEmployees" next="DimProducts">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-fill-DimEmployees.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+    <step id="DimProducts" next="DimDates">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-fill-DimProducts.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+    <step id="DimDates" next="addNullDateLookupValues">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-fill-DimDates.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+    <step id="addNullDateLookupValues" next="fillFactOrders">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-add-null-date-lookup-values.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+    <step id="fillFactOrders" next="addFKs">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-fill-FactOrders.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+
+
+    <step id="addFKs">
+        <batchlet ref="executeMultiLineSQLStatementBatchlet">
+            <properties>
+                <property name="sql_script_file" value="/data/northwind-etl-add-foreign-keys.sql"/>
+            </properties>
+        </batchlet>
+    </step>
+</job>

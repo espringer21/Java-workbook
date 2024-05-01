@@ -1,0 +1,60 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+    <ui:param name="title" value="Firebase Sign up"/>
+
+    <ui:define name="maincontent">
+        <c:if test="#{empty firebaseLoginSession.username}">
+            <h1>Sign up</h1>
+
+            <p:messages id="messages"/>
+
+            <h:form name="SignupForm">
+                <p:focus context="panel"/>
+
+                <h2 class="form-signup-heading">Please sign up</h2>
+
+                <h:panelGrid id="panel" columns="3" cellpadding="7">
+
+                    <p:outputLabel for="username" value="Email" />
+                    <p:inputText id="username"
+                                 placeholder="email"
+                                 required="true"
+                                 validatorMessage="Invalid email format."
+                                 value="#{firebaseSignup.username}">
+                    </p:inputText>
+                    <p:message for="username" />
+
+                    <p:outputLabel for="password" value="Password" />
+                    <p:password id="password"
+                                placeholder="Password"
+                                required="true"
+                                validatorMessage="Password must be at least 12 characters long and contain at least one lowercase letter, one uppercase letter, and one digit."
+                                value="#{firebaseSignup.password}">
+                    </p:password>
+                    <p:message for="password" />
+
+                </h:panelGrid>
+
+                <p:commandButton value="SignUp"
+                                 action="#{firebaseSignup.submit()}"
+                                 icon="pi pi-sign-in"
+                                 ajax="false"/>
+
+            </h:form>
+
+        </c:if>
+    </ui:define>
+</ui:composition>

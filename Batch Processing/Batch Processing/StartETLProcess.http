@@ -1,0 +1,9 @@
+
+###
+POST http://localhost:8080/restapi/batch-jobs/batchletETLProcessForDWNorthwindOrders
+
+###
+GET http://localhost:8080/restapi/batch-jobs/5
+
+###
+GET http://localhost:8080/restapi/batch-jobs/jobnames

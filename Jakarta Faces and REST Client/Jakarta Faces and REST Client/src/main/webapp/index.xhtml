@@ -1,0 +1,48 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="aboutme"/>
+
+    <ui:define name="maincontent">
+        <div class="ui-card p-2 mt-2">
+            <h2>About Me</h2>
+            <h3>Elijah Springer</h3>
+            <p:graphicImage height="200rem" width="200rem" value="#{resource['img/DMIT2015-pictureofme.jpg']}" alt="Picture of me" />
+        </div>
+        <div class="ui-card p-2 mt-2">
+            <h2>Assignment description</h2>
+            <p>
+                This assignment helps develop my skills by creating a web application using Jakarta Faces and the Microprofile REST Client. The tasks involve implementing File Templates in IntelliJ IDEA, building a REST Client for a Firebase Realtime Database, and constructing a Jakarta Faces web application that communicates with the database via a REST API Client.
+                Additionally, I have to convert a Blazor WebApp Razor Component into a Jakarta Faces page. The goal is to manage a dataset related to a chosen subject with at least three data fields, including one of type String and one of a non-String data type.
+            </p>
+        </div>
+
+        <!--Display all messages in FacesContext -->
+        <p:messages id="messages">
+            <p:autoUpdate/>
+        </p:messages>
+        <p:growl id="growl"/>
+
+        <!--Example on conditional rendering, you will need to change the rendered attribute value to an EL value expression -->
+        <p:outputPanel id="outputPanel">
+            <h:outputText
+                    rendered="false"
+                    value="Hello Faces World!"/>
+        </p:outputPanel>
+
+    </ui:define>
+
+</ui:composition>

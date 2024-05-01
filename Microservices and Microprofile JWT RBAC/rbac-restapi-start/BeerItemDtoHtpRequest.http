@@ -1,0 +1,55 @@
+### Get all Beer
+GET http://localhost:8181/restapi/BeerItems
+Content-Type: */*
+
+### Get all Beer with JWT
+GET http://localhost:8181/restapi/BeerItems/all
+Authorization: Bearer {{sking_token}}
+
+### Get a single Beer with an id of 1
+GET http://localhost:8181/restapi/BeerItems/1
+Authorization: Bearer {{sking_token}}
+
+### POST a new Beer with valid data
+POST http://localhost:8181/restapi/BeerItems
+Content-Type: application/json
+Authorization: Bearer {{sking_token}}
+
+{
+  "brand": "Love mountain",
+  "name": "blue berry whiskey",
+  "style": "Sweet"
+}
+
+### Post a new Beer with invalid data
+POST http://localhost:8181/restapi/BeerItems
+Content-Type: application/json
+Authorization: Bearer {{sking_token}}
+
+{
+  "brand": "      ",
+  "name": "        ",
+  "style": "       "
+}
+### Get a single Beer with an id of 4
+GET http://localhost:8181/restapi/BeerItems/4
+Authorization: Bearer {{sking_token}}
+
+### Update beer with an id of 4 with valid data
+PUT http://localhost:8181/restapi/BeerItems/4
+Content-Type: application/json
+
+{
+  "id": 4,
+  "brand": "Love mountain",
+  "name": "blue berry whiskey",
+  "style": "Sweet",
+  "version": 1
+}
+
+### Delete an Beer with an id of 4 without JWT
+DELETE http://localhost:8181/restapi/BeerItems/4
+
+### Delete an TodoItem with an id of 2 with JWT
+DELETE http://localhost:8181/restapi/BeerItems/4
+Authorization: Bearer {{sking_token}}

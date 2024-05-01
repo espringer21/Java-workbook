@@ -1,0 +1,15 @@
+###
+
+# curl -i -X POST http://localhost:8080/contextPath/restapi/mail
+#        -d '{"mailToAddresses":"usename@nait.ca", "mailSubject": "DMIT2015 WildFly mail subsystem", "mailText": "This email was sent using the Wildfly mail subsystem and a stateless session bean."},'
+#        -H 'Content-Type:application/json'
+POST http://localhost:8080/restapi/mail
+Content-Type: application/json
+
+{
+  "mailToAddresses": "espringer1.nait@gmail.com",
+  "mailSubject": "DMIT2015 Assginment 8 Batch Job Completion Status from Elijah Springer",
+  "mailText": "This email was sent using the Wildfly mail subsystem and a stateless session bean."
+}
+
+###

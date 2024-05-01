@@ -1,0 +1,78 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Beer - List"/>
+
+    <ui:define name="maincontent">
+
+        <h1>Beer List</h1>
+
+        <p:messages id="messages"/>
+
+        <h:form>
+
+            <p:commandButton
+                    value="Create New"
+                    action="create"
+                    icon="pi pi-database"
+                    ajax="false"
+            >
+            </p:commandButton>
+
+            <p:dataTable id="entityTable"
+                         value="#{currentBeerListView.beerMap.entrySet()}"
+                         rendered="#{not empty currentBeerListView.beerMap}"
+                         var="currentItem"
+                         rowKey="#{currentItem.key}"
+                         paginator="true" rows="10"
+                         paginatorPosition="bottom">
+
+                <!-- TODO: add p:column for each property of the entity to display -->
+                <p:column headerText="Name">
+                    <h:outputText value="#{currentItem.value.name}"/>
+                </p:column>
+                <p:column headerText="Brand">
+                    <h:outputText value="#{currentItem.value.brand}"/>
+                </p:column>
+                <p:column headerText="Style">
+                    <h:outputText value="#{currentItem.value.style}"/>
+                </p:column>
+
+<!--                <p:column headerText="Action" exportable="false">-->
+<!--                    <p:link id="editLink" outcome="edit" value="edit">-->
+<!--                        <f:param name="editId" value="#{currentItem.key}"/>-->
+<!--                    </p:link>-->
+
+<!--                    |-->
+
+<!--                    <p:link id="detailsLink" outcome="details" value="details">-->
+<!--                        <f:param name="editId" value="#{currentItem.key}"/>-->
+<!--                    </p:link>-->
+
+<!--                    |-->
+
+<!--                    <p:link id="deleteLink" outcome="delete" value="delete">-->
+<!--                        <f:param name="editId" value="#{currentItem.key}"/>-->
+<!--                    </p:link>-->
+<!--                </p:column>-->
+
+            </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

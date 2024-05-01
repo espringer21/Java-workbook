@@ -1,0 +1,46 @@
+### Get all beer
+GET http://localhost:8090/restapi/Beer
+
+### Get a single beer with an id of 1
+GET http://localhost:8090/restapi/Beer/1
+
+### POST a new beer with valid data
+POST http://localhost:8090/restapi/Beer
+Content-Type: application/json
+
+{
+  "name": "Big Blue Bear",
+  "style": "BC Amber",
+  "brand": "BC Craft",
+  "complete": false
+}
+
+### Post a new beer with invalid data
+POST http://localhost:8090/restapi/Beer
+Content-Type: application/json
+
+{
+  "name": "     ",
+  "style": "    ",
+  "brand": "    ",
+  "complete": false
+}
+
+### Get a single beer with an id of 4
+GET http://localhost:8090/restapi/Beer/4
+
+### Update beer with an id of 4 with valid data
+PUT http://localhost:8090/restapi/Beer/4
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "Small Black Cub",
+  "style": "ON Amber",
+  "brand": "ON Craft",
+  "complete": true,
+  "version": 0
+}
+
+### Delete an beer with an id of 4
+DELETE http://localhost:8090/restapi/Beer/4

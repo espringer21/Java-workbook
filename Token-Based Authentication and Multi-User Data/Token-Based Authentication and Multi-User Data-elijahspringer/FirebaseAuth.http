@@ -1,0 +1,32 @@
+
+###
+
+
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{firebase_web_api}}
+Content-Type: application/json
+
+{
+  "email": "beer1@beer.ca",
+  "password": "Ilikebeer",
+  "returnSecureToken": true
+}
+###
+
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{firebase_web_api}}
+Content-Type: application/json
+
+{
+  "email": "beer2@beer.ca",
+  "password": "beerisgood",
+  "returnSecureToken": true
+}
+
+###
+POST https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={{firebase_web_api}}
+Content-Type: application/json
+
+{
+  "email": "beer3@beer.ca",
+  "password": "tastegood",
+  "returnSecureToken": true
+}

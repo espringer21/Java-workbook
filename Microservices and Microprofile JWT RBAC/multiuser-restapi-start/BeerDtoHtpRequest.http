@@ -1,0 +1,53 @@
+### Get all Beer
+GET http://localhost:8182/restapi/BeerDto/all
+
+### Get all user Beer
+GET http://localhost:8182/restapi/BeerDto
+Authorization: Bearer {{sking_user_token}}
+
+### Get a single Beer with an id of 1
+GET http://localhost:8182/restapi/BeerDto/1
+Authorization: Bearer {{sking_user_token}}
+
+### POST a new beer with valid data
+POST http://localhost:8182/restapi/BeerDto
+Content-Type: application/json
+Authorization: Bearer {{sking_user_token}}
+
+{
+  "brand": "Love mountain",
+  "name": "blue berry whiskey",
+  "style": "Sweet"
+}
+
+### Post a new beer with invalid data
+POST http://localhost:8182/restapi/BeerDto
+Content-Type: application/json
+Authorization: Bearer {{sking_user_token}}
+
+{
+  "name": "     ",
+  "brand": "    ",
+  "style": "    "
+}
+
+### Get a single Beer with an id of 4
+GET http://localhost:8182/restapi/BeerDto/5
+Authorization: Bearer {{sking_user_token}}
+
+### Update Beer with an id of 4 with valid data
+PUT http://localhost:8182/restapi/BeerDto/5
+Content-Type: application/json
+Authorization: Bearer {{sking_user_token}}
+
+{
+  "id": 5,
+  "name": "RED berry",
+  "brand": "beer",
+  "style": "bitter",
+  "version": 0
+}
+
+### Delete an Beer with an id of 5
+DELETE http://localhost:8182/restapi/BeerDto/5
+Authorization: Bearer {{sking_user_token}}

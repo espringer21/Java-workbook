@@ -1,0 +1,76 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="aboutme"/>
+
+    <ui:define name="maincontent">
+        <h1>Tax</h1>
+
+        <h:form>
+            <h:outputText value="Tax Year: " />
+            <p:selectOneMenu value="#{canadianPersonalIncomeTax.taxYear}" >
+                <f:selectItem itemValue="2023" itemLabel="2023"/>
+                <f:selectItem itemValue="2022" itemLabel="2022"/>
+                <f:selectItem itemValue="2021" itemLabel="2021"/>
+                <f:selectItem itemValue="2020" itemLabel="2020"/>
+            </p:selectOneMenu>
+
+            <h:outputText value="Province: " />
+            <p:selectOneMenu value="#{canadianPersonalIncomeTax.province}">
+                <f:selectItem itemValue="AB" itemLabel="AB"/>
+                <f:selectItem itemValue="BC" itemLabel="BC"/>
+                <f:selectItem itemValue="MB" itemLabel="MB"/>
+                <f:selectItem itemValue="NB" itemLabel="NB"/>
+                <f:selectItem itemValue="NL" itemLabel="NL"/>
+                <f:selectItem itemValue="NS" itemLabel="NS"/>
+                <f:selectItem itemValue="ON" itemLabel="ON"/>
+                <f:selectItem itemValue="PE" itemLabel="PE"/>
+                <f:selectItem itemValue="QC" itemLabel="QC"/>
+                <f:selectItem itemValue="SK" itemLabel="SK"/>
+                <f:selectItem itemValue="NT" itemLabel="NT"/>
+                <f:selectItem itemValue="NU" itemLabel="NU"/>
+                <f:selectItem itemValue="YT" itemLabel="YT"/>
+            </p:selectOneMenu>
+
+            <h:outputText for="taxableIncome" value="Taxable Income: " />
+            <p:inputText id="taxableIncome" value="#{canadianPersonalIncomeTax.taxableIncome}">
+            </p:inputText>
+
+            <br/><br/>
+
+            <p:commandButton value="View Provincial Income Tax"
+                             action="#{canadianPersonalIncomeTax.provincialIncomeTax()}"
+                             update="messages"/>
+
+            <p:commandButton value="View Federal Income Tax"
+                             action="#{canadianPersonalIncomeTax.federalIncomeTax()}"
+                             update="messages"/>
+
+            <p:commandButton value="View Total Income Tax"
+                             action="#{canadianPersonalIncomeTax.totalIncomeTax()}"
+                             update="messages"/>
+        </h:form>
+
+
+
+
+        <p:messages id="messages" showDetail="true" showSummary="false">
+            <p:autoUpdate/>
+        </p:messages>
+
+    </ui:define>
+
+</ui:composition>

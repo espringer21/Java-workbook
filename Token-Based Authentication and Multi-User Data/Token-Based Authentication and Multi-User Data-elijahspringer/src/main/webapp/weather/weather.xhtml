@@ -1,0 +1,49 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Weather "/>
+
+    <ui:define name="maincontent">
+        <f:metadata>
+            <f:viewAction action="#{firebaseLoginSession.checkForToken}" />
+        </f:metadata>
+        <h1>Weather</h1>
+        <p>This component demonstrates showing data.</p>
+
+        <p:dataTable id="entityTable"
+                     value="#{currentWeatherListView.weatherMap.entrySet()}"
+                     rendered="#{not empty currentWeatherListView.weatherMap}"
+                     var="currentItem">
+
+            <!-- TODO: add p:column for each property of the entity to display -->
+            <p:column headerText="Date">
+                <h:outputText value="#{currentItem.value.date}"/>
+            </p:column>
+            <p:column headerText="Temp. (C)">
+                <h:outputText value="#{currentItem.value.tempc}"/>
+            </p:column>
+            <p:column headerText="Temp. (F)">
+                <h:outputText value="#{currentItem.value.tempf}"/>
+            </p:column>
+            <p:column headerText="Summary">
+                <h:outputText value="#{currentItem.value.summary}"/>
+            </p:column>
+
+        </p:dataTable>
+
+    </ui:define>
+
+</ui:composition>
