@@ -6,7 +6,7 @@ I have acquired proficiency in developing multi-user applications utilizing an e
 
 ## Projects 
 
-1. [Batch Processing](Bacth%20Processing/README.md)
+1. [Batch Processing](Batch%20Processing/README.md)
 2. [Jakarta Faces and REST Client](Jakarta%20Faces%20and%20REST%20Client/ReadMe.md)
 3. [JavaBean, JUnit, and OpenShift Developer Sandbox](JavaBean,%20JUnit,%20and%20OpenShift%20Developer%20Sandbox/ReadMe.md)
 4. [Microservices and Microprofile JWT RBAC](Microservices%20and%20Microprofile%20JWT%20RBAC/README.md)
